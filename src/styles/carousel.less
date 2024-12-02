@@ -1,0 +1,75 @@
+@import './variables.less';
+
+.carousel {
+  position: relative;
+  padding: 0 48px;
+
+  &-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 16px 0;
+    
+    // Hide scrollbar
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-item {
+    flex-shrink: 0;
+    width: @item-width;
+    transition: transform @transition-duration;
+
+    &-content {
+      background: white;
+      border-radius: @border-radius;
+      box-shadow: 0 4px 6px @shadow-color;
+      padding: 24px;
+      height: 192px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: 24px;
+        font-weight: bold;
+        color: @text-color;
+      }
+    }
+  }
+
+  &-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 2px 4px @shadow-color;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color @transition-duration;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+}
